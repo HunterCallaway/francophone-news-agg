@@ -4,17 +4,20 @@ const NewsSearch = () => {
 
     useEffect(() => {
 
-        const url = 'https://cors-anywhere.herokuapp.com/https://gnews.io/api/v4/top-headlines?lang=fr&token=' + process.env.REACT_APP_NEWS_API_KEY;
-        //const req = new Request(url);
-        fetch(url, {
+        const url = 'http://newsapi.org/v2/top-headlines?country=fr';
+        const req = new Request(url, {
             headers: {
-                
+                'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY
             }
-        })
+        });
+        fetch(req)
         .then(response => response.json())
         .then(response =>{
             console.log(response);
         })
+        .catch(error => {
+            console.log('Error: ', error);
+        });
 
     }, []);
 
