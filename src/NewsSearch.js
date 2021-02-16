@@ -1,30 +1,41 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const NewsSearch = () => {
 
+    const [data, setData] = useState([]);
+
     useEffect(() => {
 
-        const url = 'http://newsapi.org/v2/top-headlines?country=fr';
-        const req = new Request(url, {
-            headers: {
-                'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY
-            }
-        });
-        fetch(req)
-        .then(response => response.json())
-        .then(response =>{
-            console.log(response);
-        })
-        .catch(error => {
-            console.log('Error: ', error);
-        });
+        const getArticles = () => {
+
+            fetch('http://newsapi.org/v2/top-headlines?country=fr', {
+                headers: {
+                    'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY
+                 }
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(newJson => {
+                    setData(newJson);
+            })
+            .catch(error => {
+                console.log("Error: " + error);
+            });
+
+        };
+
+        getArticles();
 
     }, []);
 
-    return (
-        <div>
 
-        </div>
+    return (
+        <ul>
+            {data.articles.map((article, index) => (
+                <li key={index}>{article.title}</li>
+            ))}
+        </ul>
     );
 
 };
