@@ -29,7 +29,7 @@ const NewsSearch = () => {
 
         const getArticles = async () => {
 
-            await axios('http://newsapi.org/v2/top-headlines?country=fr', {
+            await axios.get('http://newsapi.org/v2/top-headlines?country=fr', {
                 headers: {
                     'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY
                  }
