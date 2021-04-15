@@ -25,27 +25,28 @@ const NewsSearch = () => {
     Once we either have a response from the API or an error notification,
       we will update the `loading` variable's value to `false`.
     */
+
+      const getArticles = async () => {
+
+        await axios.get('http://newsapi.org/v2/top-headlines?country=fr', {
+            headers: {
+                'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY
+             }
+        })
+        .then(response => {
+            setData(response.data)
+        })
+        .catch(error => {
+            console.log("Error: " + error);
+            setError(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        })
+
+    };
+
     useEffect(() => {
-
-        const getArticles = async () => {
-
-            await axios.get('http://newsapi.org/v2/top-headlines?country=fr', {
-                headers: {
-                    'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY
-                 }
-            })
-            .then(response => {
-                setData(response.data)
-            })
-            .catch(error => {
-                console.log("Error: " + error);
-                setError(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            })
-
-        };
 
         getArticles();
 
