@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { CountryContext } from './CountryContext';
 
 const NewsSearch = () => {
   // We initialize the state to an empty array. The state will be populated with
@@ -14,6 +15,13 @@ const NewsSearch = () => {
   // we will initialize `error` to `null`.
   const [error, setError] = useState(null);
 
+  // Importing the `country` state variable from CountryContext
+  // allows us to have a default endpoint when the component mounts
+  // and gives the user the option to rerender the component
+  // with news from other Francophone countries.
+  const countryContext = useContext(CountryContext);
+  const { country } = countryContext;
+
   /*
     NOTE: As of right now, the empty dependency array causes the `useEffect` hook
       to only run when the component mounts. When we add the functionality to toggle between
@@ -27,27 +35,26 @@ const NewsSearch = () => {
       we will update the `loading` variable's value to `false`.
     */
 
-  const getArticles = async () => {
-    await axios.get('http://newsapi.org/v2/top-headlines?country=fr', {
-      headers: {
-        'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY,
-      },
-    })
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((catchError) => {
-        console.log(`Error: ${catchError}`);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
   useEffect(() => {
+    const getArticles = async () => {
+      await axios.get(country, {
+        headers: {
+          'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY,
+        },
+      })
+        .then((response) => {
+          setData(response.data);
+        })
+        .catch((catchError) => {
+          console.log(`Error: ${catchError}`);
+          setError(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    };
     getArticles();
-  }, []);
+  }, [country, error]);
 
   if (loading) return 'Loading...';
   if (error) return 'Hmmm... Something went wrong. :(';
