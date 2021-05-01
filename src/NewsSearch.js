@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import {
+  CardDeck, Card, Container, Row, Col,
+} from 'react-bootstrap';
 import { CountryContext } from './CountryContext';
 
 const NewsSearch = () => {
@@ -60,11 +63,29 @@ const NewsSearch = () => {
   if (error) return 'Hmmm... Something went wrong. :(';
 
   return (
-    <ul>
-      {data && data.articles.map((article) => (
-        <li key={article.url}>{article.title}</li>
-      ))}
-    </ul>
+    <Container>
+      <Row>
+        {data && data.articles.map((article) => (
+          <Col xs={12} md={6} lg={3}>
+            <CardDeck>
+              <Card>
+                <Card.Img variant="top" src={article.urlToImage} />
+                <Card.Body>
+                  <Card.Title>{article.title}</Card.Title>
+                  <Card.Text>
+                    {article.description}
+                    {article.author}
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted"><a href="article.url">Article ici</a></small>
+                </Card.Footer>
+              </Card>
+            </CardDeck>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 
