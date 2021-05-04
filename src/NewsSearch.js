@@ -4,6 +4,7 @@ import {
   CardDeck, Card, Container, Row, Col,
 } from 'react-bootstrap';
 import { CountryContext } from './CountryContext';
+import newspapers from './resources/newspapers.jpg';
 
 const NewsSearch = () => {
   // We initialize the state to an empty array. The state will be populated with
@@ -69,7 +70,9 @@ const NewsSearch = () => {
           <Col xs={12} md={6} lg={3}>
             <CardDeck>
               <Card>
-                <Card.Img variant="top" src={article.urlToImage} />
+                {article.urlToImage !== null
+                  ? <Card.Img variant="top" src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />
+                  : <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />}
                 <Card.Body>
                   <Card.Title>{article.title}</Card.Title>
                   <Card.Text>
