@@ -60,8 +60,8 @@ const NewsSearch = () => {
     getArticles();
   }, [country, error]);
 
-  if (loading) return 'Loading...';
-  if (error) return 'Hmmm... Something went wrong. :(';
+  if (loading) return 'Veuillez Patienter...';
+  if (error) return 'Désolé, il y a eu une erreur. :(';
 
   return (
     <Container>
@@ -70,9 +70,9 @@ const NewsSearch = () => {
           <Col xs={12} md={6} lg={3}>
             <CardDeck>
               <Card>
-                {article.urlToImage !== null
-                  ? <Card.Img variant="top" src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />
-                  : <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />}
+                {article.urlToImage == null || article.urlToImage.includes('http') === false
+                  ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
+                  : <Card.Img variant="top" src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
                 <Card.Body>
                   <Card.Title>{article.title}</Card.Title>
                   <Card.Text>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DropdownButton, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { CountryContext } from './CountryContext';
 
 const CountrySelector = () => {
@@ -9,16 +9,18 @@ const CountrySelector = () => {
   const { handleSelect } = countryContext;
 
   return (
-    <DropdownButton
-      id="dropdown-basic-button"
-      title="Choisissez Votre Pays"
-      onSelect={handleSelect}
-    >
-      <Dropdown.Item eventKey="https://newsapi.org/v2/everything?q=francophonie&language=fr" value="Toute La Francophonie">Toute la Francophonie</Dropdown.Item>
-      <Dropdown.Item eventKey="https://newsapi.org/v2/top-headlines?country=be" value="Belgique">Belgique</Dropdown.Item>
-      <Dropdown.Item eventKey="https://newsapi.org/v2/top-headlines?country=fr" value="France">France</Dropdown.Item>
-      <Dropdown.Item eventKey="https://newsapi.org/v2/top-headlines?country=ma" value="Maroc">Maroc</Dropdown.Item>
-    </DropdownButton>
+    <Navbar bg="light" expand="lg" fixed="top" onSelect={handleSelect}>
+      <Navbar.Brand>Actuali-toute</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link eventKey="https://newsapi.org/v2/everything?q=francophonie&language=fr">La Francophonie</Nav.Link>
+          <Nav.Link eventKey="https://newsapi.org/v2/top-headlines?country=be">Belgique</Nav.Link>
+          <Nav.Link eventKey="https://newsapi.org/v2/top-headlines?country=fr">France</Nav.Link>
+          <Nav.Link eventKey="https://newsapi.org/v2/top-headlines?country=ma">Maroc</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
