@@ -67,17 +67,22 @@ const NewsSearch = () => {
     <Container>
       <Row>
         {data && data.articles.map((article) => (
-          <Col xs={12} md={6} lg={3}>
-            <CardDeck>
+          <Col xs={12} md={6} lg={3} className="d-flex">
+            <CardDeck className="py-3">
               <Card>
                 {article.urlToImage == null || article.urlToImage.includes('http') === false
                   ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
                   : <Card.Img variant="top" src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
                 <Card.Body>
-                  <Card.Title>{article.title}</Card.Title>
-                  <Card.Text>
-                    {article.description}
-                    {article.author}
+                  <Card.Title>
+                    {article.title.length > 50
+                      ? `${article.title.substring(0, 50)}...`
+                      : article.title}
+                  </Card.Title>
+                  <Card.Text className="py-2">
+                    {article.description.length > 75
+                      ? `${article.description.substring(0, 75)}...`
+                      : article.description}
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer>
