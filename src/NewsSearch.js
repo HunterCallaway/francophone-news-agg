@@ -60,8 +60,8 @@ const NewsSearch = () => {
     getArticles();
   }, [country, error]);
 
-  if (loading) return 'Veuillez Patienter...';
-  if (error) return 'Désolé, il y a eu une erreur. :(';
+  if (loading) return <div className="d-flex align-items-center justify-content-center py-5"><h1>Veuillez Patienter...</h1></div>;
+  if (error) return <div className="d-flex align-items-center justify-content-center py-5"><h1>Désolé, il y a eu une erreur. :(</h1></div>;
 
   return (
     <Container>
@@ -73,14 +73,14 @@ const NewsSearch = () => {
                 {article.urlToImage == null || article.urlToImage.includes('http') === false
                   ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
                   : <Card.Img variant="top" src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
-                <Card.Body>
+                <Card.Body className="d-flex flex-column justify-content-center">
                   <Card.Title>
                     {article.title.length > 50
                       ? `${article.title.substring(0, 50)}...`
                       : article.title}
                   </Card.Title>
-                  <Card.Text className="py-2">
-                    {article.description.length > 75
+                  <Card.Text>
+                    {article.description && article.description.length > 75
                       ? `${article.description.substring(0, 75)}...`
                       : article.description}
                   </Card.Text>
