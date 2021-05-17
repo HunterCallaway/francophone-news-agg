@@ -9,15 +9,15 @@ const CountrySelector = () => {
   const { handleSelect } = countryContext;
 
   return (
-    <Navbar bg="light" expand="lg" fixed="top" onSelect={handleSelect}>
+    <Navbar bg="light" collapseOnSelect expand="lg" fixed="top" onSelect={handleSelect}>
       <Navbar.Brand>Actuali-toute</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link eventKey="https://newsapi.org/v2/everything?q=francophonie&language=fr">La Francophonie</Nav.Link>
-          <Nav.Link eventKey="https://newsapi.org/v2/top-headlines?country=be">Belgique</Nav.Link>
-          <Nav.Link eventKey="https://newsapi.org/v2/top-headlines?country=fr">France</Nav.Link>
-          <Nav.Link eventKey="https://newsapi.org/v2/top-headlines?country=ma">Maroc</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/everything?q=francophonie&language=fr">La Francophonie</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=be">Belgique</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=fr">France</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=ma">Maroc</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
