@@ -6,6 +6,13 @@ import {
 import { CountryContext } from './CountryContext';
 import newspapers from './resources/newspapers.jpg';
 
+// This function changes the `src` to the default image
+// if there is any error.
+const addErrorSrc = (ev) => {
+  ev.target.src = newspapers; // eslint-disable-line no-param-reassign
+  ev.target.alt = 'Une photo d\'un tas de journaux'; // eslint-disable-line no-param-reassign
+};
+
 const NewsSearch = () => {
   // We initialize the state to an empty array. The state will be populated with
   // a list of articles after we fetch from the News API.
@@ -72,7 +79,7 @@ const NewsSearch = () => {
               <Card>
                 {article.urlToImage == null || article.urlToImage.includes('http') === false
                   ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
-                  : <Card.Img variant="top" src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
+                  : <Card.Img variant="top" onError={addErrorSrc} src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
                 <Card.Body className="d-flex flex-column justify-content-center">
                   <Card.Title>
                     {article.title.length > 50
