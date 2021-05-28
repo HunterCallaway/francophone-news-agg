@@ -67,7 +67,7 @@ const NewsSearch = () => {
     <Container>
       <Row>
         {data && data.articles.map((article) => (
-          <Col xs={12} md={6} lg={3} className="d-flex">
+          <Col xs={12} md={6} lg={3} className="d-flex" key={article.url}>
             <CardDeck className="py-3">
               <Card>
                 {article.urlToImage == null || article.urlToImage.includes('http') === false
