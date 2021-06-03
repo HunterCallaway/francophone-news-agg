@@ -11,10 +11,9 @@
     "eslint-plugin-jest": "^24.3.5",
     "immer": "^7.0.9",
     "prop-types": "^15.7.2",
-    "react": "^17.0.0",
     "react-bootstrap": "^1.5.2",
-    "react-dom": "^17.0.0",
     "react-scripts": "4.0.1",
+    "react-test-renderer": "^17.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -57,5 +56,16 @@
     "react-dom": "17.0.1",
     "**/react": "17.0.1",
     "**/react-dom": "17.0.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^react$": "<rootDir>/node_modules/react",
+      "^react-dom$": "<rootDir>/node_modules/react-dom",
+      "^react-test-renderer$": "<rootDir>/node_modules/react-test-renderer"
+    }
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }

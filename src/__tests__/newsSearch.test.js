@@ -28,7 +28,7 @@ describe('NewsSearch', () => {
 
     axios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-    await expect(NewsSearch()).resolves.toMatchObject(data);
+    await expect(NewsSearch(data.articles)).resolves.toHaveProperty('author', 'Sam Newsman');
   });
 
   // Error test

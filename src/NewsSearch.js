@@ -34,10 +34,6 @@ const NewsSearch = () => {
   const { country } = countryContext;
 
   /*
-    NOTE: As of right now, the empty dependency array causes the `useEffect` hook
-      to only run when the component mounts. When we add the functionality to toggle between
-      Francophone countries, the `country` state variable
-      will need to be passed into the dependency array.
     The `axios` function makes a call to the API.
     The `data` variable's value is then set to the `response` we receive.
     If any errors occur, they will be printed to the console,
@@ -46,25 +42,27 @@ const NewsSearch = () => {
       we will update the `loading` variable's value to `false`.
     */
 
-  useEffect(() => {
-    const getArticles = async () => {
-      await axios.get(country, {
-        headers: {
-          'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY,
-        },
+  const getArticles = async () => {
+    await axios.get(country, {
+      headers: {
+        'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY,
+      },
+    })
+      .then((response) => {
+        setData(response.data);
       })
-        .then((response) => {
-          setData(response.data);
-        })
-        .catch((catchError) => {
-          console.log(`Error: ${catchError}`);
-          setError(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    };
+      .catch((catchError) => {
+        console.log(`Error: ${catchError}`);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
     getArticles();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country, error]);
 
   if (loading) return <div className="d-flex align-items-center justify-content-center py-5"><h1>Veuillez Patienter...</h1></div>;
