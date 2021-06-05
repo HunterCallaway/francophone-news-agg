@@ -37,27 +37,27 @@ const NewsSearch = () => {
     The `axios` function makes a call to the API.
     The `data` variable's value is then set to the `response` we receive.
     If any errors occur, they will be printed to the console,
-      and the `error` variable's value will be updated.
+      and the `error` variable's value will be updated to `true`.
     Once we either have a response from the API or an error notification,
       we will update the `loading` variable's value to `false`.
     */
 
   const getArticles = async () => {
-    await axios.get(country, {
-      headers: {
-        'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY,
-      },
-    })
-      .then((response) => {
-        setData(response.data);
+    try {
+      await axios.get(country, {
+        headers: {
+          'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY,
+        },
       })
-      .catch((catchError) => {
-        console.log(`Error: ${catchError}`);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+        .then((response) => {
+          setData(response.data);
+          setLoading(false);
+        });
+    } catch (catchError) {
+      console.log(`Error: ${catchError}`);
+      setError(true);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
