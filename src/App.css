@@ -11,3 +11,12 @@ body {
   height: 15vw;
   object-fit: cover;
 }
+
+.font-nav {
+  font-family: 'Bentham', serif;
+  font-size: 135%;
+}
+
+.font-card {
+  font-family: 'Fira Sans', sans-serif;
+}

@@ -74,7 +74,7 @@ const NewsSearch = () => {
         {data && data.articles.map((article) => (
           <Col xs={12} md={6} lg={3} className="d-flex" key={article.url}>
             <CardDeck className="py-3">
-              <Card>
+              <Card className="font-card">
                 {article.urlToImage == null || article.urlToImage.includes('http') === false
                   ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
                   : <Card.Img variant="top" onError={addErrorSrc} src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
