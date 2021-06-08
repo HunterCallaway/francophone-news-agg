@@ -65,8 +65,8 @@ const NewsSearch = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country, error]);
 
-  if (loading) return <div className="d-flex align-items-center justify-content-center py-5"><h1>Veuillez Patienter...</h1></div>;
-  if (error) return <div className="d-flex align-items-center justify-content-center py-5"><h1>Désolé, il y a eu une erreur. :(</h1></div>;
+  if (loading) return <div className="d-flex align-items-center justify-content-center py-5 font-loading"><h1>Veuillez Patienter...</h1></div>;
+  if (error) return <div className="d-flex align-items-center justify-content-center py-5 font-error"><h1>Désolé, il y a eu une erreur. :(</h1></div>;
 
   return (
     <Container>
@@ -74,12 +74,12 @@ const NewsSearch = () => {
         {data && data.articles.map((article) => (
           <Col xs={12} md={6} lg={3} className="d-flex" key={article.url}>
             <CardDeck className="py-3">
-              <Card className="font-card">
+              <Card className="font-card card-background border-secondary">
                 {article.urlToImage == null || article.urlToImage.includes('http') === false
                   ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
                   : <Card.Img variant="top" onError={addErrorSrc} src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
-                <Card.Body className="d-flex flex-column justify-content-center">
-                  <Card.Title>
+                <Card.Body className="d-flex flex-column justify-content-center text-center">
+                  <Card.Title className="font-card">
                     {article.title.length > 50
                       ? `${article.title.substring(0, 50)}...`
                       : article.title}
@@ -90,8 +90,8 @@ const NewsSearch = () => {
                       : article.description}
                   </Card.Text>
                 </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted"><a href="article.url">Article ici</a></small>
+                <Card.Footer className="footer-color border-secondary text-center">
+                  <a href="article.url" className="link-color">Article ici</a>
                 </Card.Footer>
               </Card>
             </CardDeck>

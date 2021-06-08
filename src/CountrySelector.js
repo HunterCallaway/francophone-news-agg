@@ -11,11 +11,11 @@ const CountrySelector = () => {
   // NB: As of May 2021, there is an open GitHub issue regarding the
   // `findDOMNode is deprecated in StrictMode` console warning React-Bootstrap is causing.
   return (
-    <Navbar bg="light" collapseOnSelect expand="lg" fixed="top" onSelect={handleSelect} className="font-nav">
-      <Navbar.Brand className="font-nav">Actuali-toute</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+    <Navbar collapseOnSelect expand="lg" fixed="top" onSelect={handleSelect} className="nav-background">
+      <Navbar.Brand className="font-nav-brand pl-2">Actuali-toute</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center font-nav-link">
+        <Nav>
           <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/everything?q=francophonie&language=fr">La Francophonie</Nav.Link>
           <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=be">Belgique</Nav.Link>
           <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=fr">France</Nav.Link>
