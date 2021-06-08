@@ -16,10 +16,10 @@ const CountrySelector = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center font-nav-link">
         <Nav>
-          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/everything?q=francophonie&language=fr">La Francophonie</Nav.Link>
-          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=be">Belgique</Nav.Link>
-          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=fr">France</Nav.Link>
-          <Nav.Link className="px-5" eventKey="https://newsapi.org/v2/top-headlines?country=ma">Maroc</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://damp-oasis-29049.herokuapp.com/https://newsapi.org/v2/everything?q=francophonie&language=fr">La Francophonie</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://damp-oasis-29049.herokuapp.com/https://newsapi.org/v2/top-headlines?country=be">Belgique</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://damp-oasis-29049.herokuapp.com/https://newsapi.org/v2/top-headlines?country=fr">France</Nav.Link>
+          <Nav.Link className="px-5" eventKey="https://damp-oasis-29049.herokuapp.com/https://newsapi.org/v2/top-headlines?country=ma">Maroc</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
