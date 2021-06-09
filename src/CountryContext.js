@@ -5,7 +5,7 @@ export const CountryContext = createContext();
 
 export const CountryProvider = ({ children }) => {
   // We initialize the state to the `everything` endpoint and pull stories about 'la francophonie'.
-  const [country, setCountry] = useState('https://damp-oasis-29049.herokuapp.com/https://newsapi.org/v2/everything?q=francophonie&language=fr');
+  const [country, setCountry] = useState(`${process.env.REACT_APP_FRENCH_URL}`);
 
   // This function is connected to the CountrySelector's DropdownButton `onChange` property.
   // When the user selects a country from the Dropdown menu,

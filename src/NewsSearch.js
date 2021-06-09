@@ -44,11 +44,7 @@ const NewsSearch = () => {
 
   const getArticles = async () => {
     try {
-      await axios.get(country, {
-        headers: {
-          'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY,
-        },
-      })
+      await axios.get(country)
         .then((response) => {
           setData(response.data);
           setLoading(false);
@@ -71,13 +67,13 @@ const NewsSearch = () => {
   return (
     <Container>
       <Row>
-        {data && data.articles.map((article) => (
+        {data && data.data.map((article) => (
           <Col xs={12} md={6} lg={3} className="d-flex" key={article.url}>
             <CardDeck className="py-3">
               <Card className="font-card card-background border-secondary">
-                {article.urlToImage == null || article.urlToImage.includes('http') === false
+                {article.image == null || article.image.includes('http') === false
                   ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
-                  : <Card.Img variant="top" onError={addErrorSrc} src={article.urlToImage} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
+                  : <Card.Img variant="top" onError={addErrorSrc} src={article.image} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
                 <Card.Body className="d-flex flex-column justify-content-center text-center">
                   <Card.Title className="font-card">
                     {article.title.length > 50
