@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { CountryContext } from './CountryContext';
+import { CountryContext } from '../context/CountryContext';
 
 const CountrySelector = () => {
   // To update the `country` state variable,

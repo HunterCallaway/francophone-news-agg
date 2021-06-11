@@ -3,8 +3,8 @@ import axios from 'axios';
 import {
   CardDeck, Card, Container, Row, Col,
 } from 'react-bootstrap';
-import { CountryContext } from './CountryContext';
-import newspapers from './resources/newspapers.jpg';
+import { CountryContext } from '../context/CountryContext';
+import newspapers from '../resources/newspapers.jpg';
 
 // This function changes the `src` to the default image
 // if there is any error.

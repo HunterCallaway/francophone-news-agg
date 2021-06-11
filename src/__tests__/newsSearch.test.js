@@ -3,8 +3,8 @@ import {
   render, waitFor, cleanup,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import NewsSearch from '../NewsSearch';
-import { CountryProvider } from '../CountryContext';
+import NewsSearch from '../components/NewsSearch';
+import { CountryProvider } from '../context/CountryContext';
 
 const axios = require('axios');
 

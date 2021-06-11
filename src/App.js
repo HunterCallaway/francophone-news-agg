@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
-import NewsSearch from './NewsSearch';
-import { CountryProvider } from './CountryContext';
-import CountrySelector from './CountrySelector';
+import NewsSearch from './components/NewsSearch';
+import { CountryProvider } from './context/CountryContext';
+import CountrySelector from './components/CountrySelector';
 
 function App() {
   return (
