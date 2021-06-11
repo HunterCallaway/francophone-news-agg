@@ -21,7 +21,7 @@ describe('NewsSearch', () => {
   it('fetches data from the NewsAPI', async () => {
     const data = {
       data: {
-        articles: [
+        data: [
           {
             author: 'Sam Newsman',
             title: 'Local School Board Controversy',
