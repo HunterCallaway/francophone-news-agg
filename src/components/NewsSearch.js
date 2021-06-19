@@ -87,7 +87,7 @@ const NewsSearch = () => {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="footer-color border-secondary text-center">
-                  <a href="article.url" className="link-color">Article ici</a>
+                  <a href={article.url} target="_blank" className="link-color" rel="noreferrer">Article ici</a>
                 </Card.Footer>
               </Card>
             </CardDeck>
