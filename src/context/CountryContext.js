@@ -12,6 +12,10 @@ export const CountryProvider = ({ children }) => {
   // the `country` state variable is updated.
   const handleSelect = (e) => {
     setCountry(e);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (

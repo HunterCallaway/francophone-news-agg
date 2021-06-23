@@ -4,7 +4,6 @@ import { Container } from 'react-bootstrap';
 import NewsSearch from './components/NewsSearch';
 import { CountryProvider } from './context/CountryContext';
 import CountrySelector from './components/CountrySelector';
-import ScrollButton from './components/ScrollButton';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
           <CountrySelector />
           <NewsSearch />
         </CountryProvider>
-        <ScrollButton />
       </Container>
     </div>
   );
