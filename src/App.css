@@ -3,6 +3,10 @@ body {
   background-color: #fef6e4;
 }
 
+.navbar {
+  width: 100%;
+}
+
 .font-nav-brand {
   font-family: 'Bentham', serif;
   font-size: 200%;
@@ -56,3 +60,7 @@ body {
   font-family: 'Bentham', serif;
   color: #001858;
 }
+
+.scroll-to-top {
+  opacity: 0.8;
+} 
