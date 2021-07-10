@@ -5,9 +5,9 @@ export const CountryContext = createContext();
 
 export const CountryProvider = ({ children }) => {
   // We initialize the state to the `everything` endpoint and pull stories about 'la francophonie'.
-  const [country, setCountry] = useState(`${process.env.REACT_APP_FRENCH_URL}`);
+  const [country, setCountry] = useState('/.netlify/functions/media-api');
 
-  // This function is connected to the CountrySelector's DropdownButton `onChange` property.
+  // This function is connected to the CountrySelector's DropdownButton `onSelect` property.
   // When the user selects a country from the Dropdown menu,
   // the `country` state variable is updated.
   const handleSelect = (e) => {
@@ -21,6 +21,7 @@ export const CountryProvider = ({ children }) => {
   return (
     <CountryContext.Provider value={{
       country,
+      setCountry,
       handleSelect,
     }}
     >

@@ -11,16 +11,16 @@ const CountrySelector = () => {
   // NB: As of May 2021, there is an open GitHub issue regarding the
   // `findDOMNode is deprecated in StrictMode` console warning React-Bootstrap is causing.
   return (
-    <Navbar collapseOnSelect expand="lg" fixed="top" onSelect={handleSelect} className="navbar nav-background">
+    <Navbar collapseOnSelect expand="lg" fixed="top" className="navbar nav-background" onSelect={handleSelect}>
       <Navbar.Brand className="font-nav-brand pl-2">Actuali-toute</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center font-nav-link">
         <Nav>
-          <Nav.Link className="px-5" eventKey={process.env.REACT_APP_FRENCH_URL}>Francophonie</Nav.Link>
-          <Nav.Link className="px-5" eventKey={process.env.REACT_APP_BELGIUM_URL}>Belgique</Nav.Link>
-          <Nav.Link className="px-5" eventKey={process.env.REACT_APP_FRANCE_URL}>France</Nav.Link>
-          <Nav.Link className="px-5" eventKey={process.env.REACT_APP_MOROCCO_URL}>Maroc</Nav.Link>
-          <Nav.Link className="px-5" eventKey={process.env.REACT_APP_SWITZERLAND_URL}>Suisse</Nav.Link>
+          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api">Francophonie</Nav.Link>
+          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=be">Belgique</Nav.Link>
+          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=fr">France</Nav.Link>
+          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=ma">Maroc</Nav.Link>
+          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=ch">Suisse</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
