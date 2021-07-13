@@ -8,6 +8,11 @@ const CountrySelector = () => {
   const countryContext = useContext(CountryContext);
   const { handleSelect } = countryContext;
 
+  const be = 'be';
+  const fr = 'fr';
+  const ma = 'ma';
+  const ch = 'ch';
+
   // NB: As of May 2021, there is an open GitHub issue regarding the
   // `findDOMNode is deprecated in StrictMode` console warning React-Bootstrap is causing.
   return (
@@ -17,10 +22,10 @@ const CountrySelector = () => {
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center font-nav-link">
         <Nav>
           <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api">Francophonie</Nav.Link>
-          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=be">Belgique</Nav.Link>
-          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=fr">France</Nav.Link>
-          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=ma">Maroc</Nav.Link>
-          <Nav.Link className="px-5" eventKey="/.netlify/functions/media-api?country=ch">Suisse</Nav.Link>
+          <Nav.Link className="px-5" eventKey={`/.netlify/functions/media-api?country=${be}`}>Belgique</Nav.Link>
+          <Nav.Link className="px-5" eventKey={`/.netlify/functions/media-api?country=${fr}`}>France</Nav.Link>
+          <Nav.Link className="px-5" eventKey={`/.netlify/functions/media-api?country=${ma}`}>Maroc</Nav.Link>
+          <Nav.Link className="px-5" eventKey={`/.netlify/functions/media-api?country=${ch}`}>Suisse</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

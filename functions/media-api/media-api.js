@@ -3,16 +3,10 @@ const process = require('process');
 const axios = require('axios');
 
 const handler = async (event) => {
-  // apply our function to the queryStringParameters and assign it to a variable
-  // const API_PARAMS = qs.stringify(event.queryStringParameters);
-  const country = event.queryStringParameters;
-  console.log('API_PARAMS', country);
-  // Get env var values defined in our Netlify site UI
+  const country = event.queryStringParameters.country || '';
 
-  // TODO: customize your URL and API keys set in the Netlify Dashboard
-  // this is secret too, your frontend won't see this
   const { REACT_APP_API_KEY } = process.env;
-  const URL = `http://api.mediastack.com/v1/news?access_key=${REACT_APP_API_KEY}&languages=fr` || `http://api.mediastack.com/v1/news?access_key=${REACT_APP_API_KEY}&languages=fr&countries=${country}`;
+  const URL = `http://api.mediastack.com/v1/news?access_key=${REACT_APP_API_KEY}&languages=fr&countries=${country}`;
 
   try {
     const { data } = await axios.get(URL);
