@@ -4,7 +4,7 @@ import {
   CardDeck, Card, Container, Row, Col,
 } from 'react-bootstrap';
 import { CountryContext } from '../context/CountryContext';
-import newspapers from '../resources/newspapers.jpg';
+import newspapers from '../resources/newspapers.jpeg';
 
 // This function changes the `src` to the default image
 // if there is any error.
@@ -67,12 +67,12 @@ const NewsSearch = () => {
   return (
     <Container>
       <Row>
-        {data && data.data.slice(0, 20).map((article) => (
+        {data && data.data.slice(0, 21).map((article) => (
           <Col xs={12} md={6} lg={4} className="d-flex" key={article.url}>
             <CardDeck className="py-3">
               <Card className="font-card card-background border-secondary">
                 {article.image == null || article.image.includes('http') === false
-                  ? <Card.Img variant="top" src={newspapers} alt="Une photo d'un tas de journaux" />
+                  ? <Card.Img variant="top" rel="preload" as="image" src={newspapers} alt="Une photo d'un tas de journaux" />
                   : <Card.Img variant="top" onError={addErrorSrc} src={article.image} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
                 <Card.Body className="d-flex flex-column justify-content-center text-center">
                   <Card.Title className="font-card">
