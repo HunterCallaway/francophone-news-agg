@@ -71,9 +71,7 @@ const NewsSearch = () => {
           <Col xs={12} md={6} lg={4} className="d-flex" key={article.url}>
             <CardDeck className="py-3">
               <Card className="font-card card-background border-secondary">
-                {article.image == null || article.image.includes('http') === false
-                  ? <Card.Img variant="top" rel="preload" as="image" src={newspapers} alt="Une photo d'un tas de journaux" />
-                  : <Card.Img variant="top" as="image" src={article.image} alt="La description de l'image sera accessible en cliquant sur le lien au bas de cette carte." />}
+                <Card.Img variant="top" src={article.image == null || article.image.includes('http') === false ? newspapers : article.image} alt={article.image == null || article.image.includes('http') === false ? "Une photo d'un tas de journaux" : "La description de l'image sera accessible en cliquant sur le lien au bas de cette carte."} />
                 <Card.Body className="d-flex flex-column justify-content-center text-center">
                   <Card.Title className="font-card">
                     {article.title.length > 50
